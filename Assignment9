@@ -1,0 +1,109 @@
+import java.util.Stack;
+import java.util.LinkedList;
+public class App {
+    public static void main(String[] args) throws Exception {
+   /*
+Remember that stacks/queues/linkedlists all work super similarly to arraylists, so i bet you $10 you could reference earlier HW if you get stuck....
+
+1. Take the stack I created and find the maximum and minimum value
+2. Find out how many elements were in the stack
+
+3. Find the middle value of the linkedlist I created
+
+4. Implement a real life example of any of the structures and do at least 3 operations to it
+*/
+
+        Stack<Integer> stax = new Stack<>();
+        
+        stax.push(70);
+        stax.push(34);
+        stax.push(807);
+        stax.push(61);
+        stax.push(28);
+        stax.push(563);
+        stax.push(492);
+        stax.push(386);
+        System.out.println("The stack has " + stax.size() + " Values.");
+        int maximum = 0;
+        for(int i = 0; i < stax.size(); i++){ // for loop to find max value. Searches through 
+            // first index then second using .size then checks each element against the other.
+            for(int j = 0; j < stax.size(); j++){
+                if(stax.get(i) > stax.get(j)){
+                    if(stax.get(i) > maximum){
+                    maximum = stax.get(i);
+        }}}}
+        System.out.println("The maximum value is " + maximum);
+
+
+        int minimum = stax.get(0); 
+        for(int i = 0; i < stax.size(); i++){ // for loop for minimum. works same as other loop
+            //just opposite
+            for(int j = 0; j < stax.size(); j++){
+                if(stax.get(i) < stax.get(j)){
+                    if(stax.get(i) < minimum){
+                        minimum = stax.get(i);
+            }}}}
+        System.out.println("The minimum value is " + minimum);
+
+        LinkedList<Integer> linky = new LinkedList<>();
+        linky.add(10);
+        linky.add(20);
+        linky.add(30);
+        linky.add(40);
+        linky.add(50);
+        int midValue = linky.size() / 2; // divides size by 2 to get middle value
+        System.out.println("The middle element is " + linky.get(midValue));
+
+        Stack <Integer> water = new Stack<>(); // real life example for the number of times someone drinks water in any given day
+        water.push(3);                  //sorry i couldnt think of a good one
+        water.push(8);
+        water.push(3);
+        water.push(12);
+        water.push(11);
+        water.push(6);
+        water.push(3);
+        water.push(8);
+        water.push(9);
+        water.push(11);
+        water.push(4);
+        water.push(7);
+        
+        int max = 0;
+        for(int i = 0; i < water.size(); i++){ //same as earlier
+            for(int j = 0; j < water.size(); j++){
+                if(water.get(i) > water.get(j)){
+                    if(water.get(i) > max){
+                    max = water.get(i);
+        }}}}
+        System.out.println("The maximum value is " + max);
+
+
+        int min = water.get(0); 
+        for(int i = 0; i < water.size(); i++){  //same as earlier
+            for(int j = 0; j < water.size(); j++){
+                if(water.get(i) < water.get(j)){
+                    if(water.get(i) < min){
+                        min = water.get(i);
+            }}}}
+        System.out.println(water.capacity()); 
+
+        System.out.println(numOfOccurrences(water, 3)); //inside parenthesees (Stack, target value)
+
+        } public static int numOfOccurrences(Stack<Integer> stack, int target) { //this one took me so long
+            Stack<Integer> temp = new Stack<>();                                  // pretty typical function to find the amount of occurences a value has within a stack
+            int count = 0;                                                         //works similar to how it would for array just uses stack commands
+            while (!stack.isEmpty()) {
+                int value = stack.pop();
+                if (value == target) {
+                    count++;
+                }
+                temp.push(value);
+            }
+            while (!temp.isEmpty()) {
+                stack.push(temp.pop());
+            }
+            return count;
+        
+        
+      } }
+
