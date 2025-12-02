@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        List<String> listy = new ArrayList<String>(); // creates to list listy
+        int names = 0; // sents counter variable to 0
+        File inputFile = new File("practice.txt");
+        
+        try{
+        Scanner sc = new Scanner(inputFile);
+        while(sc.hasNext()){
+            listy.add(sc.nextLine());
+            } 
+        }catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for(int i = 0; i < listy.size(); i++){ //checks every line of file and follows the according steps
+            try{
+            double gpa = Double.parseDouble(listy.get(i)); //checks for doubles
+            if (gpa > 3.5){
+                System.out.println(listy.get(i - 1));
+            }
+            } catch (NumberFormatException e) { 
+                names ++; //counts number of time catch is used
+            }
+            System.out.println("The list has " + names + " names.");
+        }
+    }
+}
+// I learned how to easily navigate files.
